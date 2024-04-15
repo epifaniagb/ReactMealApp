@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+
 const RandomMealsComponent = ({ numMeals }) => {
     const [randomMeals, setRandomMeals] = useState([]);
   
@@ -26,3 +28,5 @@ const RandomMealsComponent = ({ numMeals }) => {
       </div>
     );
   };
+
+  export default RandomMealsComponent;
