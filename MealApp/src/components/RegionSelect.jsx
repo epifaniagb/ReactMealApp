@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import fetchData from '../../utils/fetchData';
+import fetchData from '../utils/fetchData';
 
 const RegionComponent = () => {
     const [regions, setRegions] = useState([]);
@@ -7,9 +7,10 @@ const RegionComponent = () => {
     useEffect(() => {
       const fetchRegions = async () => {
         const eachRegion = await fetchData('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
-        const fiveRegions = eachRegion.meals.slice(0, 4);
+        const fiveRegions = eachRegion[0].meals.slice(0, 5);
         setRegions(fiveRegions);
         console.log(eachRegion);
+        console.log(fiveRegions);
         console.log(regions);
       };
   
@@ -28,3 +29,4 @@ const RegionComponent = () => {
   export default RegionComponent;
 
   // fetch function utils
+  // refactor to be a form
