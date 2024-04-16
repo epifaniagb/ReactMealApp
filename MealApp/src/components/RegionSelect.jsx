@@ -16,25 +16,29 @@ const RegionComponent = () => {
   }, []);
 
   const handleRegionChange = (e) => {
+    e.preventDefault();
     setSelectedRegion(e.target.value);
+    {selectedRegion && (
+      <p>You selected: {selectedRegion}</p>
+    )}
   };
 
   return (
-    <div className="dropdown-menu">
+    <section>
+    <form onSubmit={handleRegionChange} className="dropdown-menu">
       <select value={selectedRegion} onChange={handleRegionChange}>
         <option value="">Select Region</option>
         {regions.map(region => (
           <option key={region.strArea} value={region.strArea}>{region.strArea}</option>
         ))}
       </select>
-      {selectedRegion && (
-        <p>You selected: {selectedRegion}</p>
-      )}
-    </div>
+    </form>
+    </section>
   );
 };
 
 export default RegionComponent;
 
-  // fetch function utils
-  // refactor to be a form
+  // refactor for form submission
+  // fetch data utils
+  // handleSubmit

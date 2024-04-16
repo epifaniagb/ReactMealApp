@@ -19,14 +19,16 @@ const RandomMealsComponent = ({ numMeals }) => {
     return (
       <div id="oneMeal">
         {randomMeals.map(meal => (
-          <div key={meal.idMeal} className="eachRender">
+          <section key={meal.idMeal} className="eachRender">
             <img src={meal.strMealThumb} alt="Image of Food" className="meal-image" />
             <p>{meal.strMeal}</p>
             <button className="moreInfo" onClick={() => clickForMore(meal.idMeal)}>Click for more info</button>
-          </div>
+          </section>
         ))}
       </div>
     );
   };
 
   export default RandomMealsComponent;
+
+  // Randomize button put on home page
