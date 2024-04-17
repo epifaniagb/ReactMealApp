@@ -1,4 +1,4 @@
-import RegionComponent from "../components/RegionSelect";
+import RegionComponent from "../components/RegionComponent";
 import NavBar from "../components/NavBar";
 
 const Home = () => {
