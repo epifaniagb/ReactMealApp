@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import fetchData from '../utils/fetchData';
-import MealsByRegion from './MealsByRegion'; // Import the MealsByRegion component
+import MealsByRegion from '../components/MealsByRegion';
 
 const RegionComponent = () => {
   const [regions, setRegions] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState('');
+
+
+
 
   useEffect(() => {
     const fetchRegions = async () => {
@@ -16,28 +19,24 @@ const RegionComponent = () => {
     fetchRegions();
   }, []);
 
-  const handleRegionChange = (e) => {
+  const handleRegionChange = async (e) => {
     e.preventDefault();
-    const region = e.target.value;
-    setSelectedRegion(region);
-    if (region) {
-      console.log("You selected:", region);
-    }
-  };
+    const [meals, error] = await fetchData(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${e.target.value}`);
+    console.log(meals.meals)
+    setSelectedRegion(meals.meals);   
+  };  
 
   return (
     <section>
-      <form onSubmit={handleRegionChange} className="dropdown-menu">
+      <form className="dropdown-menu">
         <select value={selectedRegion} onChange={handleRegionChange}>
           <option value="">Select Region</option>
           {regions.map(region => (
             <option key={region.strArea} value={region.strArea}>{region.strArea}</option>
           ))}
         </select>
-        <button type="submit">Submit</button>
       </form>
-      {/* Pass selectedRegion as prop to MealsByRegion component */}
-      {selectedRegion && <MealsByRegion region={selectedRegion} />}
+      { selectedRegion && <MealsByRegion selectedRegion={selectedRegion} />}
     </section>
   );
 };
