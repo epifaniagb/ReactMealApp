@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import fetchData from '../utils/fetchData';
 import MealsByRegion from '../components/MealsByRegion';
 
 const RegionComponent = () => {
   const [regions, setRegions] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState('');
-
-
-
 
   useEffect(() => {
     const fetchRegions = async () => {
@@ -22,7 +20,6 @@ const RegionComponent = () => {
   const handleRegionChange = async (e) => {
     e.preventDefault();
     const [meals, error] = await fetchData(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${e.target.value}`);
-    console.log(meals.meals)
     setSelectedRegion(meals.meals);   
   };  
 

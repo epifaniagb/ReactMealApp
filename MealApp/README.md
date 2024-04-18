@@ -17,7 +17,7 @@
 - [x] Have all components in their own files (1 export per file)
 - [ ] Passed props to a component at least 3 times
   - [x] 1st check box
-  - [ ] 2nd check box
+  - [x] 2nd check box
   - [ ] 3rd check box
 - [ ] Used the `useState` hook at least 3 times
   - [x] 1st check box

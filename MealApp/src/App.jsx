@@ -9,6 +9,8 @@ function App() {
     <main>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path="/meal/:mealId" render={({ match }) => <MealDetailsPage mealId={match.params.mealId} />} />
+          console.log(MealDetailsPage)
         </Routes>
       </main>
   )

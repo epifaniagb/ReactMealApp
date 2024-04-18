@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MealsByRegion = ({ selectedRegion }) => {
   return (
@@ -7,8 +8,10 @@ const MealsByRegion = ({ selectedRegion }) => {
       <div className="meals">
         {selectedRegion.map(meal => (
           <div key={meal.idMeal} className="meal">
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
-            <p>{meal.strMeal}</p>
+            <Link to={`/meal/${meal.idMeal}`}>
+              <img src={meal.strMealThumb} alt={meal.strMeal} />
+              <p>{meal.strMeal}</p>
+            </Link>
           </div>
         ))}
       </div>
