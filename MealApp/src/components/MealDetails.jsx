@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import fetchData from '../utils/fetchData';
+import MealContext from '../utils/mealContext';
 
-const MealDetailsPage = ({ mealId }) => {
-  const [mealDetails, setMealDetails] = useState(null);
+
+const MealDetails = ({ mealId }) => {
+  const { mealDetails, setMealDetails } = useContext(MealContext);
 
   useEffect(() => {
     const fetchMealDetails = async () => {
       try {
-        const moreInfo = await fetchData(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+        const [moreInfo] = await fetchData(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=52928`);
         setMealDetails(moreInfo.meals[0]);
       } catch (error) {
         console.error('Error fetching meal details:', error);
@@ -39,4 +41,4 @@ const MealDetailsPage = ({ mealId }) => {
   );
 };
 
-export default MealDetailsPage;
+export default MealDetails;

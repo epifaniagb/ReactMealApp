@@ -2,17 +2,16 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css'
 
 import Home from './pages/Home'
+import MealDetailsPage from './pages/MealsDetailPage';
 
 function App() {
-
   return (
     <main>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path="/meal/:mealId" render={({ match }) => <MealDetailsPage mealId={match.params.mealId} />} />
-          console.log(MealDetailsPage)
-        </Routes>
-      </main>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path="/meal/:mealId" element={<MealDetailsPage />} />
+      </Routes>
+    </main>
   )
 }
 
