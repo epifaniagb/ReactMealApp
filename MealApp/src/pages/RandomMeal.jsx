@@ -17,15 +17,18 @@ const RandomMealsComponent = ({ numMeals }) => {
     }, [numMeals]);
   
     return (
-      <div id="oneMeal">
-        {randomMeals.map(meal => (
-          <section key={meal.idMeal} className="eachRender">
-            <img src={meal.strMealThumb} alt="Image of Food" className="meal-image" />
-            <p>{meal.strMeal}</p>
-            <button className="moreInfo" onClick={() => clickForMore(meal.idMeal)}>Click for more info</button>
-          </section>
-        ))}
-      </div>
+      <NavBar/>
+      <MealDetails/>
+  )
+      // <div id="oneMeal">
+      //   {randomMeals.map(meal => (
+      //     <section key={meal.idMeal} className="eachRender">
+      //       <img src={meal.strMealThumb} alt="Image of Food" className="meal-image" />
+      //       <p>{meal.strMeal}</p>
+      //       <button className="moreInfo" onClick={() => clickForMore(meal.idMeal)}>Click for more info</button>
+      //     </section>
+      //   ))}
+      // </div>
     );
   };
 
