@@ -1,15 +1,17 @@
 import { useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom'; // Assuming you are using React Router
 import fetchData from '../utils/fetchData';
 import MealContext from '../utils/mealContext';
 
-
-const MealDetails = ({ mealId }) => {
+const MealDetails = () => {
+  const { mealId } = useParams(); // Extract mealId from URL
   const { mealDetails, setMealDetails } = useContext(MealContext);
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
 
   useEffect(() => {
     const fetchMealDetails = async () => {
       try {
-        const [moreInfo] = await fetchData(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=52928`);
+        const [moreInfo] = await fetchData(url);
         setMealDetails(moreInfo.meals[0]);
       } catch (error) {
         console.error('Error fetching meal details:', error);
@@ -17,7 +19,7 @@ const MealDetails = ({ mealId }) => {
     };
 
     fetchMealDetails();
-  }, [mealId]);
+  }, [mealId, setMealDetails, url]); // Include url in the dependencies array
 
   return (
     <div>
